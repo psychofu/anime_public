@@ -25,8 +25,8 @@ parsed_args = parser.parse_args()
 
 random.seed(parsed_args.seed)
 
-print ">clusters", parsed_args.clusters
-print ">batch", parsed_args.batch
+print(">clusters", parsed_args.clusters)
+print(">batch", parsed_args.batch)
 
 flows = []
 
@@ -44,7 +44,7 @@ for l in sys.stdin:
 
     d = max(d, len(path))
 
-print "d is", d
+print("d is", d)
 
 device_labeling = HierarchicalLabeling.load_from_file(parsed_args.labeling)
 pathFeature = Feature("path", HRegexLabeling(device_labeling, d))
@@ -58,9 +58,9 @@ else:
 clustering = HierarchicalClustering(parsed_args.clusters, parsed_args.batch)
 clusters = clustering.cluster(flows, Feature('flow', flow_labeling))
 
-print "final clusters:"
+print("final clusters:")
 for c in clusters:
-    print c
+    print(c)
 
 
 

@@ -256,13 +256,7 @@ public:
     }
 
     int name_to_id(const std::string& name) const {
-        if (label_to_id.find(name) != label_to_id.end()) {
-            return label_to_id.at(name);
-        } else {
-            label_to_id[name] = label_to_id.size();
-            return label_to_id.size() - 1;
-        }
-        
+        return label_to_id.at(name);
     }
 
     std::set<int> get_predecessors(int l) {

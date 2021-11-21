@@ -21,8 +21,8 @@ public:
     }
 
 
-    std::string device_file = "../experiments/hre-cli/examples/dc_labeling.json";
-    std::string flows_file = "../experiments/hre-cli/examples/dc_ip_1.in";
+    std::string device_file = "./label.in";
+    std::string flows_file = "./flow.in";
 
     bool multithreaded_init = true;
     bool multithreaded_index_remove = false;

@@ -1,5 +1,6 @@
 anime项目文档.docx
 cpp/*.out
 .idea/*
+.vscode/*
 src/anime/__pycache__/*
 src/anime/framework/__pycache__/*

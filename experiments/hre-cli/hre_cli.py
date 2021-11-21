@@ -48,9 +48,28 @@ for l in text:
 
     d = max(d, len(path))
 
-print("d is", d)
+print("The longest path length is {}, for example (u1-fw1-s1...)".format(d))
 
+"""
+加载label info file
+{
+  "u1" : {"parents": ["User"], "cost" : 1},
+  "u2" : {"parents": ["User"], "cost" : 1},
+  "u3" : {"parents": ["User"], "cost" : 1},
+  "s1" : {"parents": ["Server"], "cost" : 1},
+  "s2" : {"parents": ["Server"], "cost" : 1},
+  "s3" : {"parents": ["Server"], "cost" : 1},
+  "fw1" : {"parents": ["Firewall"], "cost" : 1},
+  "fw2" : {"parents": ["Firewall"], "cost" : 1},
+  "User" : {"parents": ["Any"], "cost" : 3},
+  "Server" : {"parents": ["Any"], "cost" : 3},
+  "Firewall" : {"parents": ["Any"], "cost" : 2},
+  "Any" : {"parents": [], "cost" : 8}
+}
+"""
 device_labeling = HierarchicalLabeling.load_from_file(parsed_args.labeling)
+
+# 两个特征，一个path、一个ip
 pathFeature = Feature("path", HRegexLabeling(device_labeling, d))
 ipFeature = Feature("dst ip", IPv4PrefixLabeling())
 

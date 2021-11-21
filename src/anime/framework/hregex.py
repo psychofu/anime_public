@@ -13,6 +13,7 @@ class HRegexElement(object):
     # __slots__ = ["label", "multiple"]
 
     def __init__(self, label, multiple):
+        # multiple is true or false, means that last elem is '+'
         self.label = label
         self.multiple = multiple
 
@@ -35,6 +36,12 @@ class HRegex(object):
 
     def __eq__(self, other):
         return self.regex == other.regex
+
+    def __gt__(self, other):
+        return True
+
+    def __lt__(self, other):
+        return True
 
     def __repr__(self):
         return "(" + " ".join(map(str, self.regex)) + ")"
@@ -127,7 +134,7 @@ class HRegexLabeling(Labeling):
                         cost, parent = closed[node]
 
                 ret.reverse()
-                print(best_cost, best_cost**(-1.0/best[0]))
+                # print("best_cost, best_cost**(-1.0/best[0]) ----> {0} and {1}".format(best_cost, best_cost**(-1.0/best[0])))
                 ret = Spec((best_cost**(-1.0/best[0]))**self.d, HRegex(ret))
                 #print ret
                 return ret

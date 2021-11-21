@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 __author__ = "Ali Kheradmand"
-__email__ =  "kheradm2@illinois.edu"
-
+__email__ = "kheradm2@illinois.edu"
 
 import argparse
 import sys
 import random
 import logging
+
 sys.path.append('../../src/')
 from anime.framework.clustering import *
 from anime.framework.hregex import *
@@ -16,9 +16,10 @@ from anime.framework.labeling import *
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--labeling', '-l', help='path to labeling json file', type=str, default="labeling.json")
+parser.add_argument('--labeling', '-l', help='path to labeling json file', type=str,
+                    default="examples\\dc_labeling.json")
 parser.add_argument('--clusters', '-c', help='number of cluster', type=int, default=1)
-parser.add_argument('--ip', help='paths with ip', type=bool, default=False)
+parser.add_argument('--ip', help='paths with ip', type=bool, default='10.0.0.2')
 parser.add_argument('--batch', '-b', help='batch size', type=int, default=0)
 parser.add_argument("--seed", '-s', help='random seed', type=int, default=10)
 parsed_args = parser.parse_args()
@@ -31,7 +32,10 @@ print(">batch", parsed_args.batch)
 flows = []
 
 d = 0
-for l in sys.stdin:
+info = open('examples\\dc_ip_1.in')
+text = info.readlines()
+info.close()
+for l in text:
     path = l.strip().split()
     if len(path) == 0:
         continue
@@ -61,9 +65,3 @@ clusters = clustering.cluster(flows, Feature('flow', flow_labeling))
 print("final clusters:")
 for c in clusters:
     print(c)
-
-
-
-
-
-

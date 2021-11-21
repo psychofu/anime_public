@@ -115,6 +115,7 @@ public:
     };
 
     void add_label_info(const std::string& label, const LabelInfo& info) {
+        // label: u1, info: labelInfo(parents, children, cost)
         assert(label_to_id.find(label) == label_to_id.end());
         const auto id = label_info.size();
         label_to_id[label] = id;
@@ -255,7 +256,13 @@ public:
     }
 
     int name_to_id(const std::string& name) const {
-        return label_to_id.at(name);
+        if (label_to_id.find(name) != label_to_id.end()) {
+            return label_to_id.at(name);
+        } else {
+            label_to_id[name] = label_to_id.size();
+            return label_to_id.size() - 1;
+        }
+        
     }
 
     std::set<int> get_predecessors(int l) {

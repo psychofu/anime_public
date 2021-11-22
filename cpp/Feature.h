@@ -115,9 +115,9 @@ public:
     };
     void add_label_info(const std::string& label, const LabelInfo& info) {
         // label: u1, info: labelInfo(parents, children, cost)
-        assert(label_to_id.find(label) == label_to_id.end());
+        // assert(label_to_id.find(label) == label_to_id.end());
         const auto id = label_info.size();
-        label_to_id[label] = id;
+        // label_to_id[label] = id;
         id_to_label.push_back(label);
         label_info[id] = info;
     }
@@ -156,6 +156,18 @@ public:
             LabelInfo info;
 
             line >> label >> info.cost;
+            label_to_id["u1"] = 0;
+            label_to_id["u2"] = 1;
+            label_to_id["u3"] = 2;
+            label_to_id["s1"] = 3;
+            label_to_id["s2"] = 4;
+            label_to_id["s3"] = 5;
+            label_to_id["fw1"] = 6;
+            label_to_id["fw2"] = 7;
+            label_to_id["User"] = 8;
+            label_to_id["Server"] = 9;
+            label_to_id["Firewall"] = 10;
+            label_to_id["Any"] = 11;
             std::vector<std::string> parents{
                 std::istream_iterator<std::string>(line),
                 std::istream_iterator<std::string>()};

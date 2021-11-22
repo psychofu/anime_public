@@ -212,7 +212,7 @@ public:
 
         assert(best != -1);
 
-        //std::cout << "join of " << id_to_name(l1) << " " << id_to_name(l2)  << " is " << id_to_name(best) << " with cost " << cost(best) << std::endl;
+        std::cout << "join of " << id_to_name(l1) << " " << id_to_name(l2)  << " is " << id_to_name(best) << " with cost " << cost(best) << std::endl;
 
         join_cache[{l1,l2}] = best;
 

@@ -255,13 +255,8 @@ public:
         return id_to_label[id];
     }
 
-    int name_to_id(const std::string& name) {
-        if (label_to_id.count(name) == 0) {
-            label_to_id[name] = flag;
-            flag++;
-        } else {
-            return label_to_id.at(name);
-        }
+    int name_to_id(const std::string& name) const {
+        return label_to_id.at(name);
     }
 
     std::set<int> get_predecessors(int l) {

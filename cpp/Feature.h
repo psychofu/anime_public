@@ -113,7 +113,6 @@ public:
         std::vector<int> children;
         Cost cost;
     };
-    int flag = 0;
     void add_label_info(const std::string& label, const LabelInfo& info) {
         // label: u1, info: labelInfo(parents, children, cost)
         assert(label_to_id.find(label) == label_to_id.end());

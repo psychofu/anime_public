@@ -113,7 +113,7 @@ public:
         std::vector<int> children;
         Cost cost;
     };
-
+    int flag = 0;
     void add_label_info(const std::string& label, const LabelInfo& info) {
         // label: u1, info: labelInfo(parents, children, cost)
         assert(label_to_id.find(label) == label_to_id.end());
@@ -255,8 +255,13 @@ public:
         return id_to_label[id];
     }
 
-    int name_to_id(const std::string& name) const {
-        return label_to_id.at(name);
+    int name_to_id(const std::string& name) {
+        if (label_to_id.count(name) == 0) {
+            label_to_id[name] = flag;
+            flag++;
+        } else {
+            return label_to_id.at(name);
+        }
     }
 
     std::set<int> get_predecessors(int l) {

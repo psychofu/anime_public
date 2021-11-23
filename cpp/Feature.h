@@ -162,8 +162,8 @@ public:
             label_to_id["s1"] = 3;
             label_to_id["s2"] = 4;
             label_to_id["s3"] = 5;
-            label_to_id["fw1"] = 6;
-            label_to_id["fw2"] = 7;
+            label_to_id["f1"] = 6;
+            label_to_id["f2"] = 7;
             label_to_id["User"] = 8;
             label_to_id["Server"] = 9;
             label_to_id["Firewall"] = 10;

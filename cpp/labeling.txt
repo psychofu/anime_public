@@ -4,8 +4,8 @@ u3 1 User
 s1 1 Server
 s2 1 Server
 s3 1 Server
-fw1 1 Firewall
-fw2 1 Firewall
+f1 1 Firewall
+f2 1 Firewall
 User 3 Any
 Server 3 Any
 Firewall 2 Any

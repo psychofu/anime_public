@@ -21,8 +21,8 @@ public:
     }
 
 
-    std::string device_file = "./labeling.txt";
-    std::string flows_file = "./flow.txt";
+    std::string device_file = "labeling.txt";
+    std::string flows_file = "flow.txt";
 
     bool multithreaded_init = true;
     bool multithreaded_index_remove = false;

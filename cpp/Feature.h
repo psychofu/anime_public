@@ -141,9 +141,26 @@ public:
         finalized = true;
     }
 
+    void update_label_to_id(const std::string& file) {
+        std::ifstream fin(file);
+        assert(fin);
+        std::string line_str;
+        int i = 0;
+        while (std::getline(fin, line_str)){
+            std::stringstream line{line_str};
+            std::string label;
+
+            line >> label;
+            label_to_id[label] = i;
+            i++;
+        }
+        fin.close();
+    }
+
     void load_from_file(const std::string& file) {
         std::ifstream fin(file);
         assert(fin);
+        update_label_to_id(file);
 
         std::string line_str;
         while (std::getline(fin, line_str)){
@@ -156,18 +173,6 @@ public:
             LabelInfo info;
 
             line >> label >> info.cost;
-            label_to_id["u1"] = 0;
-            label_to_id["u2"] = 1;
-            label_to_id["u3"] = 2;
-            label_to_id["s1"] = 3;
-            label_to_id["s2"] = 4;
-            label_to_id["s3"] = 5;
-            label_to_id["f1"] = 6;
-            label_to_id["f2"] = 7;
-            label_to_id["User"] = 8;
-            label_to_id["Server"] = 9;
-            label_to_id["Firewall"] = 10;
-            label_to_id["Any"] = 11;
             std::vector<std::string> parents{
                 std::istream_iterator<std::string>(line),
                 std::istream_iterator<std::string>()};
@@ -178,7 +183,7 @@ public:
 
             add_label_info(label, info);
         }
-
+        fin.close();
         finalize_label_info();
     }
 
